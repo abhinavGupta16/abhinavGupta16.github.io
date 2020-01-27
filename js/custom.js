@@ -44,6 +44,7 @@
     $('#about').parallax("100%", 0.3);
     $('#service').parallax("100%", 0.2);
     $('#experience').parallax("100%", 0.3);
+    $('#projects').parallax("100%", 0.3);
     $('#education').parallax("100%", 0.1);
     $('#quotes').parallax("100%", 0.3);
     $('#contact').parallax("100%", 0.1);
