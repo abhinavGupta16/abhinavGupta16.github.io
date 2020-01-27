@@ -20,6 +20,11 @@ html,body {
 }
 
 
+.main{
+    width:1350px;
+    margin: auto;
+}
+
 /*---------------------------------------
     Typorgraphy              
 -----------------------------------------*/
@@ -487,6 +492,24 @@ a:hover, a:active, a:focus {
 /*---------------------------------------
     Education section              
 -----------------------------------------*/
+
+#about {
+  background: #E3AE57;
+}
+
+#about .media .fa {
+  font-size: 42px;
+  margin-right: 14px;
+}
+
+#about .media-heading {
+  margin-bottom: 0px;
+}
+
+#about small {
+  color: #886D1E;
+  font-weight: bold;
+}
 
 #education {
   background: #E3AE57;
