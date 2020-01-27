@@ -198,8 +198,15 @@ footer {
 html{
   -webkit-font-smoothing: antialiased;
 }
+a.a-custom{
+    color: #FFFFFF;
+}
+a.a-custom:hover, a.a-custom:active, a.a-custom:focus {
+  color: #FFFFFF;
+  outline: none;
+}
 
-a {
+a:not(.a-custom) {
   color: #E3AE57;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
@@ -393,6 +400,7 @@ a:hover, a:active, a:focus {
 
 #about .about-img {
     background: url('../images/about-img.jpg') no-repeat;
+    min-height: 82vh;
 }
 
 #about .about-thumb,
@@ -584,6 +592,9 @@ a:hover, a:active, a:focus {
 
 #contact .contact-img {
   background: url('../images/contact-img.jpg') no-repeat;
+   background-size: cover;
+   background-position: 50% 50%;
+   width: 100%;
   min-height: 75vh;
 }
 
@@ -754,4 +765,95 @@ footer {
   footer {
     padding: 40px 0;
   }
+}
+
+/*popup
+.myPopup{
+    position: relative;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+}
+
+.myPopup:target{
+opacity: 1;}
+.myPopup > div {
+    width: 400px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius:10px;
+    background: #71a6fc;
+    background: -moz-linear-gradient(#71a6fc, #fff);
+    background: -webkit-linear-gradient(#71a6fc, #999);
+}
+
+.close{
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    -webkit-border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover{
+    background: 00d9ff;
+}
+*/
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 70%;
+  position: relative;
+  transition: all 5s ease-in-out;
+  background: #E3AE57;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+  font-size: 18px
 }
