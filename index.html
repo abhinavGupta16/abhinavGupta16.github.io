@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 
 <meta charset="UTF-8">
@@ -487,56 +487,79 @@ http://www.templatemo.com/tm-498-stimulus
      <section id="contact" class="parallax-section">
           <div class="container">
                <div class="row">
-
-<!--                    <div class="col-md-6 col-sm-12">-->
-<!--                         <div class="contact-form">-->
-<!--                              <div class="wow fadeInUp section-title" data-wow-delay="0.2s">-->
-<!--                                   <h1 class="color-white">Say hello..</h1>-->
-<!--                                   <p class="color-white">Integer ut consectetur est. In cursus orci non ipsum gravida dignissim.</p>-->
-<!--                              </div>-->
-
-<!--                              <div id="contact-form">-->
-<!--                                   <form action="#template-mo" method="post">-->
-<!--                                        <div class="wow fadeInUp" data-wow-delay="1s">-->
-<!--                                             <input name="fullname" type="text" class="form-control" id="fullname" placeholder="Your Name">-->
-<!--                                        </div>-->
-<!--                                        <div class="wow fadeInUp" data-wow-delay="1.2s">-->
-<!--                                             <input name="email" type="email" class="form-control" id="email" placeholder="Your Email">-->
-<!--                                        </div>-->
-<!--                                        <div class="wow fadeInUp" data-wow-delay="1.4s">-->
-<!--                                             <textarea name="message" rows="5" class="form-control" id="message" placeholder="Write your message..."></textarea>-->
-<!--                                        </div>-->
-<!--                                        <div class="wow fadeInUp col-md-6 col-sm-8" data-wow-delay="1.6s">-->
-<!--                                             <input name="submit" type="submit" class="form-control" id="submit" value="Send">-->
-<!--                                        </div>-->
-<!--                                   </form>-->
-<!--                              </div>-->
-
-<!--                         </div>-->
-<!--                    </div>-->
-
                     <div class="col-md-6 col-sm-6">
                          <div class="contact-img"></div>
                     </div>
-
-                    <div class="bg-dark col-md-6 col-sm-6">
-                         <div class="contact-thumb">
-                              <!--                         <div class="wow fadeInUp contact-info" data-wow-delay="0.6s">-->
-                              <!--                              <h3 class="color-white">Visit my office</h3>-->
-                              <!--                              <p>456 New Street 22000, New York City, USA</p>-->
-                              <!--                         </div>-->
-
-                              <div class="wow fadeInUp contact-info" data-wow-delay="0.4s">
-                                   <h2 class="color-white">Contact Me</h2>
-                                   <p style="font-size: 21px;"><i class="fa fa-phone"></i> (646) 964-8628</p>
-                                   <p style="font-size: 21px;"><i class="fa fa-envelope-o"></i> <a href="mailto:guptabhi123@gmail.com" target="_blank">guptabhi123@gmail.com</a></p>
-                                   <p style="font-size: 21px;"><i class="fa fa-linkedin"></i> <a href="https://www.linkedin.com/in/abhinavgupta16/" target="_blank">Linkedin</a></p>
-                                   <!--                              <p><i class="fa fa-globe"></i> <a href="#">company.co</a></p>-->
-                              </div>
-
+                    <div class="right-content col-md-6 col-sm-6">
+                         <div class="section-heading">
+                              <h2 class="color-white">Contact Me</h2>
+                              <div class="line-dec"></div>
+                              <span>Please enter your details below</span>
+                         </div>
+                         <div class="container">
+                              <form id="contact_me">
+                                   <div class="row">
+                                        <div class="col-md-6">
+                                             <fieldset>
+                                                  <input name="name"
+                                                         type="text"
+                                                         class="form-control"
+                                                         id="name"
+                                                         placeholder="Your name..."
+                                                         required=""
+                                                  />
+                                             </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                             <fieldset>
+                                                  <input
+                                                          name="email"
+                                                          type="text"
+                                                          class="form-control"
+                                                          id="email"
+                                                          placeholder="Your email..."
+                                                          required=""
+                                                  />
+                                             </fieldset>
+                                        </div>
+                                        <div class="col-md-12">
+                                             <fieldset>
+                                                  <input
+                                                          name="subject"
+                                                          type="text"
+                                                          class="form-control"
+                                                          id="subject"
+                                                          placeholder="Subject..."
+                                                          required=""
+                                                  />
+                                             </fieldset>
+                                        </div>
+                                        <div class="col-md-12">
+                                             <fieldset>
+                                                           <textarea
+                                                                   name="message"
+                                                                   rows="6"
+                                                                   class="form-control"
+                                                                   id="message"
+                                                                   placeholder="Your message..."
+                                                                   required=""
+                                                           ></textarea>
+                                             </fieldset>
+                                        </div>
+                                        <div class="col-md-12">
+                                             <fieldset>
+                                                  <button type="submit" class="button" onclick="sendJSON()">
+                                                       Send Message
+                                                  </button>
+                                             </fieldset>
+                                        </div>
+<!--                                        <div class="g-recaptcha"-->
+<!--                                             data-sitekey="6LdabcoZAAAAACf76soTlSW0VV3_K461BZStIGi3">-->
+<!--                                        </div>-->
+                                   </div>
+                              </form>
                          </div>
                     </div>
-
                </div>
           </div>
      </section>
@@ -570,6 +593,97 @@ http://www.templatemo.com/tm-498-stimulus
      <script src="js/smoothscroll.js"></script>
      <script src="js/wow.min.js"></script>
      <script src="js/custom.js"></script>
+     <script src='https://www.google.com/recaptcha/api.js'></script>
+
+     <script>
+          function sendJSON(){
+               console.log("here");
+               let result = document.querySelector('.result');
+               let name = document.querySelector('#name');
+               let email = document.querySelector('#email');
+               let subject = document.querySelector('#subject');
+               let message = document.querySelector('#message');
+
+               // Creating a XHR object
+               let xhr = new XMLHttpRequest();
+               let url = "http://localhost:8080/v1/sendEmail";
+
+               // open a connection
+               xhr.open("POST", url, true);
+
+               // Set the request header i.e. which type of content you are sending
+               xhr.setRequestHeader("Content-Type", "application/json");
+
+               // Create a state change callback
+               xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+
+                         // Print received data from server
+                         result.innerHTML = this.responseText;
+
+                    }
+               };
+
+               // Converting JSON data to string
+               var data = JSON.stringify({ "name": name.value, "email": email.value, "sub": subject.value, "msg": message.value});
+
+               console.log(data);
+
+               // Sending data with the request
+               xhr.send(data);
+          }
+     </script>
+
+     <script>
+          //according to loftblog tut
+          $(".main-menu li:first").addClass("active");
+
+          var showSection = function showSection(section, isAnimate) {
+               var direction = section.replace(/#/, ""),
+                       reqSection = $(".section").filter(
+                               '[data-section="' + direction + '"]'
+                       ),
+                       reqSectionPos = reqSection.offset().top - 0;
+
+               if (isAnimate) {
+                    $("body, html").animate(
+                            {
+                                 scrollTop: reqSectionPos
+                            },
+                            800
+                    );
+               } else {
+                    $("body, html").scrollTop(reqSectionPos);
+               }
+          };
+
+          var checkSection = function checkSection() {
+               $(".section").each(function() {
+                    var $this = $(this),
+                            topEdge = $this.offset().top - 80,
+                            bottomEdge = topEdge + $this.height(),
+                            wScroll = $(window).scrollTop();
+                    if (topEdge < wScroll && bottomEdge > wScroll) {
+                         var currentId = $this.data("section"),
+                                 reqLink = $("a").filter("[href*=\\#" + currentId + "]");
+                         reqLink
+                                 .closest("li")
+                                 .addClass("active")
+                                 .siblings()
+                                 .removeClass("active");
+                    }
+               });
+          };
+
+          $(".main-menu").on("click", "a", function(e) {
+               e.preventDefault();
+               showSection($(this).attr("href"), true);
+          });
+
+          $(window).scroll(function() {
+               checkSection();
+          });
+     </script>
 
 </div>
 
